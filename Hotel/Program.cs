@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.Design;
+﻿using Hotel;
+using System.ComponentModel.Design;
 
 do
 {
@@ -34,12 +35,21 @@ void LecturaSwitch()
     switch (Menu())
     {
         case 1:
+            Habitacion.AgregarHabitacion();
             break;
         case 2:
+            Habitacion.EliminarHabitacion();
             break;
         case 3:
+            Habitacion.MostrarInfo();
             break;
         case 4:
+            Habitacion.MostrarInfo();
+            break;
+        case 5:
+            Habitacion.MostrarInfo();
+            break;
+        case 6:
             Console.WriteLine("Ciao amigo!");
             Environment.Exit(0);
             break;
