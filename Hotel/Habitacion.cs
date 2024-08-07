@@ -41,10 +41,13 @@ namespace Hotel
                 case 2:
                     Console.WriteLine("¿Posee vista al mar?, escriba si o no");
                     string vistaMar = Console.ReadLine()??"";
-                    int validacionVistaMar = String.
+                    int comparacion = string.Compare(vistaMar,"si", true);
+                    bool validacionVistaMar = false;
+                    if (comparacion == 0) validacionVistaMar = true;
+                    else validacionVistaMar = false;
+                    HabitacionDoble habitacionDobleAgregada = new HabitacionDoble(numeroHabitacion, precio, "N/A", validacionVistaMar);
 
-                    HabitacionSimple habitacionSimpleAgregada = new HabitacionSimple(numeroHabitacion, precio, "N/A", numeroCamas);
-                    listadoHabitaciones.Add(habitacionSimpleAgregada);
+                    listadoHabitaciones.Add(habitacionDobleAgregada);
                     break;
                 case 3:
                    
