@@ -41,23 +41,38 @@ namespace Hotel
                 case 2:
                     Console.WriteLine("¿Posee vista al mar?, escriba si o no");
                     string vistaMar = Console.ReadLine()??"";
-                    int comparacion = string.Compare(vistaMar,"si", true);
-                    bool validacionVistaMar = false;
-                    if (comparacion == 0) validacionVistaMar = true;
-                    else validacionVistaMar = false;
-                    HabitacionDoble habitacionDobleAgregada = new HabitacionDoble(numeroHabitacion, precio, "N/A", validacionVistaMar);
-
+                    HabitacionDoble habitacionDobleAgregada = new HabitacionDoble(numeroHabitacion, precio, "N/A", Comparacion(vistaMar));
                     listadoHabitaciones.Add(habitacionDobleAgregada);
                     break;
                 case 3:
-                   
+                    Console.WriteLine("Ingrese el numero de habitaciones");
+                    int numeroHabitaciones = Convert.ToInt32(Console.ReadLine() ?? "");
+                    Console.WriteLine("¿Tiene Jacuzzi?, escriba si o no");
+                    string jacuzzi = Console.ReadLine() ?? "";
+                    bool Jacuzzi = Comparacion(jacuzzi);
+
+                    Suite SuiteAgregada= new Suite(numeroHabitacion, precio, "N/A", Jacuzzi, numeroHabitaciones);
+                    listadoHabitaciones.Add(SuiteAgregada);
+                    break;
+                case 4:
+                    Console.WriteLine("Ingrese el numero de camas");
+                    string extras =Console.ReadLine() ?? "";
+
+                    Deluxe DeluxeAgregada= new Deluxe(numeroHabitacion, precio, "N/A", extras);
+                    listadoHabitaciones.Add(DeluxeAgregada);
                     break;
                 default:
                     break;
             }
             Console.WriteLine("¡Tu producto se ha ingresado con éxito!");
         }
-        
+
+        public static bool Comparacion(string cadenaTexto) 
+        {
+            int comparacion = string.Compare(cadenaTexto, "si", true);
+            if (comparacion == 0) return true;
+            else return false;
+        }
         public static void MostrarInfo() 
         {
            
