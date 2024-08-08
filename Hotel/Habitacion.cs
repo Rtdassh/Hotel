@@ -37,9 +37,9 @@ namespace Hotel
                 }
 
                 Habitacion? consulta = listadoHabitaciones.Find(n => n.NumeroHabitacion == numeroHabitacion);
-                if (consulta != null) { Console.WriteLine("Enhorabuena, el numero de habitación es nuevo"); break; }
+                if (consulta == null) { Console.WriteLine("Enhorabuena, el numero de habitación es nuevo"); break; }
                 else { Console.WriteLine("Desgraciadamente, el numero de habitación se repite"); Console.ReadKey(); }
-
+            }
                 Console.Write("Ingrese el precio por noche: ");
                 double precio = Convert.ToDouble(Console.ReadLine() ?? "");
 
@@ -78,8 +78,7 @@ namespace Hotel
                     default:
                         break;
                 }
-                Console.WriteLine("¡Tu habitación se ha ingresado con éxito!");
-            }
+                Console.WriteLine("¡Tu habitación se ha ingresado con éxito!");            
         }
 
             public static bool Comparacion(string cadenaTexto)
@@ -93,21 +92,26 @@ namespace Hotel
                 int consulta = Busqueda();
                 if (consulta != -1) listadoHabitaciones.Remove(listadoHabitaciones[consulta]);
             }
-            public static void MostrarInfo()
+            public virtual void MostrarInfo()
             {
-                int consulta = Busqueda();
-                if (consulta != -1) Console.WriteLine($"Numero de habitación: {listadoHabitaciones[consulta].NumeroHabitacion} || Precio por noche: {listadoHabitaciones[consulta].PrecioNoche} || Cliente Asignado: {listadoHabitaciones[consulta].ClienteAsignado}");
-                else Console.WriteLine("Desgraciadamente, el numero de habitación no se ha encontrado");
+            int consulta = Busqueda();
+            if (consulta != -1) {
+                Console.WriteLine($"Numero de habitación: {listadoHabitaciones[consulta].NumeroHabitacion} || Precio por noche: {listadoHabitaciones[consulta].PrecioNoche} || Cliente Asignado: {listadoHabitaciones[consulta].ClienteAsignado}");
+                AtributosEspecificos(consulta);
             }
+            else Console.WriteLine("Desgraciadamente, el numero de habitación no se ha encontrado");
+        }
+
+        public virtual void AtributosEspecificos(int consulta) { }
 
             public static int Busqueda()
             {
                 Console.WriteLine("Ingrese el numero de habitación");
                 int numeroHabitacion = Convert.ToInt32(Console.ReadLine());
 
-                Habitacion? consulta = listadoHabitaciones.Find(n => n.NumeroHabitacion == numeroHabitacion);
-                if (consulta != null) return numeroHabitacion;
-                else return -1;
+               int consulta = listadoHabitaciones.FindIndex(n => n.NumeroHabitacion == numeroHabitacion);
+                if (consulta >=0) return consulta;
+                else return -1; 
             }
             public static void CambiarDisponibilidad(bool disponible)
             {

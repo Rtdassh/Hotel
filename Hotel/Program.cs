@@ -41,13 +41,10 @@ void LecturaSwitch()
             Habitacion.EliminarHabitacion();
             break;
         case 3:
-            Habitacion.MostrarInfo();
             break;
         case 4:
-            Habitacion.MostrarInfo();
             break;
         case 5:
-            Habitacion.MostrarInfo();
             break;
         case 6:
             Console.WriteLine("Ciao amigo!");
