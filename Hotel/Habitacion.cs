@@ -46,13 +46,13 @@ namespace Hotel
                         Console.Write("Ingrese el numero de camas: ");
                         int numeroCamas = Convert.ToInt32(Console.ReadLine() ?? "");
 
-                        HabitacionSimple habitacionSimpleAgregada = new HabitacionSimple(numeroHabitacion, precio, "N/A", numeroCamas);
+                        HabitacionSimple habitacionSimpleAgregada = new HabitacionSimple(numeroHabitacion, precio, "Disponible", numeroCamas);
                         listadoHabitaciones.Add(habitacionSimpleAgregada);
                         break;
                     case 2:
                         Console.WriteLine("¿Posee vista al mar?, escriba si o no");
                         string vistaMar = Console.ReadLine() ?? "";
-                        HabitacionDoble habitacionDobleAgregada = new HabitacionDoble(numeroHabitacion, precio, "N/A", Comparacion(vistaMar));
+                        HabitacionDoble habitacionDobleAgregada = new HabitacionDoble(numeroHabitacion, precio, "Disponible", Comparacion(vistaMar));
                         listadoHabitaciones.Add(habitacionDobleAgregada);
                         break;
                     case 3:
@@ -62,14 +62,14 @@ namespace Hotel
                         string jacuzzi = Console.ReadLine() ?? "";
                         bool Jacuzzi = Comparacion(jacuzzi);
 
-                        Suite SuiteAgregada = new Suite(numeroHabitacion, precio, "N/A", Jacuzzi, numeroHabitaciones);
+                        Suite SuiteAgregada = new Suite(numeroHabitacion, precio, "Disponible", Jacuzzi, numeroHabitaciones);
                         listadoHabitaciones.Add(SuiteAgregada);
                         break;
                     case 4:
                         Console.Write("Ingrese los servicios adicionales: ");
                         string extras = Console.ReadLine() ?? "";
 
-                        Deluxe DeluxeAgregada = new Deluxe(numeroHabitacion, precio, "N/A", extras);
+                        Deluxe DeluxeAgregada = new Deluxe(numeroHabitacion, precio, "Disponible", extras);
                         listadoHabitaciones.Add(DeluxeAgregada);
                         break;
                     default:
@@ -120,7 +120,7 @@ namespace Hotel
             {
                 int consulta = Busqueda();
 
-            if (consulta != -1 && listadoHabitaciones[consulta].ClienteAsignado == "N/A" )
+            if (consulta != -1 && listadoHabitaciones[consulta].ClienteAsignado == "Disponible" )
                 {
                 Console.WriteLine("Ingrese el nombre del cliente");
                 string nombre = Console.ReadLine()??"";
@@ -137,9 +137,9 @@ namespace Hotel
             {
                 int consulta = Busqueda();
 
-            if (consulta != -1 && listadoHabitaciones[consulta].ClienteAsignado != "N/A")
+            if (consulta != -1 && listadoHabitaciones[consulta].ClienteAsignado != "Disponible")
             {
-                string nombre = "N/A";
+                string nombre = "Disponible";
                 listadoHabitaciones[consulta].ClienteAsignado = nombre;
                 Console.WriteLine("La habitación ha sido desasignada con éxito");
             }
