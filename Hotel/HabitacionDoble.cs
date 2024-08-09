@@ -10,6 +10,10 @@ namespace Hotel
     {
         public bool VistaAlMar { get; set; }
 
+        public override void AtributosEspecificos(int consulta)
+        {
+            Console.WriteLine($"Vista al mar: {VistaAlMar}");
+        }
         public HabitacionDoble(int numeroHabitacion, double precioNoche, string clienteAsignado, bool vistaAlMar) : base(numeroHabitacion, precioNoche, clienteAsignado)
         {
             VistaAlMar = vistaAlMar;

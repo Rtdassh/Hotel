@@ -12,7 +12,7 @@ namespace Hotel
 
         public override void AtributosEspecificos(int consulta) 
         {
-            Console.WriteLine($"Numero de camas {listadoHabitaciones[consulta].NumeroHabitacion} || Precio por noche: {listadoHabitaciones[consulta].PrecioNoche} || Cliente Asignado: {listadoHabitaciones[consulta].ClienteAsignado}");
+            Console.WriteLine($"Numero de camas: {NumeroCamas}");
         }
 
         public HabitacionSimple(int numeroHabitacion, double precioNoche, string clienteAsignado, int numeroCamas) : base(numeroHabitacion, precioNoche, clienteAsignado)

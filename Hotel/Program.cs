@@ -1,5 +1,6 @@
 ﻿using Hotel;
 using System.ComponentModel.Design;
+using System.Globalization;
 
 do
 {
@@ -41,10 +42,13 @@ void LecturaSwitch()
             Habitacion.EliminarHabitacion();
             break;
         case 3:
+            Habitacion.MostrarInfo();
             break;
-        case 4:
+        case 4:           
+            Habitacion.AsignarCliente();
             break;
         case 5:
+            Habitacion.LiberarHabitacion();
             break;
         case 6:
             Console.WriteLine("Ciao amigo!");

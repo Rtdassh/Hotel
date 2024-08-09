@@ -8,6 +8,10 @@ namespace Hotel
 {
     internal class Suite: Habitacion
     {
+        public override void AtributosEspecificos(int consulta)
+        {
+            Console.WriteLine($"Jacuzzi: {Jacuzzi} || Numero de habitaciones: {NumeroHabitaciones}");
+        }
         public Suite(int numeroHabitacion, double precioNoche, string clienteAsignado, bool jacuzzi, int numeroHabitaciones) : base(numeroHabitacion, precioNoche, clienteAsignado)
         {
             Jacuzzi = jacuzzi;
