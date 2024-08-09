@@ -12,7 +12,10 @@ namespace Hotel
 
         public override void AtributosEspecificos()
         {
-            Console.WriteLine($"Vista al mar: {VistaAlMar}");
+            string option;
+            if (VistaAlMar == true) option = "Afirmativo";
+            else option = "Negativo";
+            Console.WriteLine($"Vista al mar: {option}");
         }
         public HabitacionDoble(int numeroHabitacion, double precioNoche, string clienteAsignado, bool vistaAlMar) : base(numeroHabitacion, precioNoche, clienteAsignado)
         {

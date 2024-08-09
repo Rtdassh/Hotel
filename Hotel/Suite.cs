@@ -10,7 +10,10 @@ namespace Hotel
     {
         public override void AtributosEspecificos()
         {
-            Console.WriteLine($"Jacuzzi: {Jacuzzi} || Numero de habitaciones: {NumeroHabitaciones}");
+            string option;
+            if (Jacuzzi == true) option = "Afirmativo";
+            else option = "Negativo";
+            Console.WriteLine($"Jacuzzi: {option} || Numero de habitaciones: {NumeroHabitaciones}");
         }
         public Suite(int numeroHabitacion, double precioNoche, string clienteAsignado, bool jacuzzi, int numeroHabitaciones) : base(numeroHabitacion, precioNoche, clienteAsignado)
         {
