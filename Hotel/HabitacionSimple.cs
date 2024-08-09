@@ -10,7 +10,7 @@ namespace Hotel
     {
         public int NumeroCamas { get; set; }
 
-        public override void AtributosEspecificos(int consulta) 
+        public override void AtributosEspecificos() 
         {
             Console.WriteLine($"Numero de camas: {NumeroCamas}");
         }

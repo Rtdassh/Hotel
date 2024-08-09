@@ -23,20 +23,15 @@ namespace Hotel
             Console.WriteLine("2. Habitación Doble");
             Console.WriteLine("3. Suite");
             Console.WriteLine("4. Habitación Deluxe");
+            Console.Write("Ingrese el tipo de habitación que ingresará: ");
             int tipoHabitacion = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Ingrese el tipo de habitación que ingresará");
-            Console.Write("");
+            Console.WriteLine("");
             Console.Write("Ingrese el numero de habitación: ");
-            int numeroHabitacion = default;
+            int numeroHabitacion = Convert.ToInt32(Console.ReadLine());
             bool numeroRepetido = true;
 
             while (numeroRepetido)
             {
-                while (!int.TryParse(Console.ReadLine(), out numeroHabitacion))
-                {
-                    Console.Write("Por favor, ingrese un número válido para la habitación: ");
-                }
-
                 Habitacion? consulta = listadoHabitaciones.Find(n => n.NumeroHabitacion == numeroHabitacion);
                 if (consulta == null) { Console.WriteLine("Enhorabuena, el numero de habitación es nuevo"); break; }
                 else { Console.WriteLine("Desgraciadamente, el numero de habitación se repite"); Console.ReadKey(); }
@@ -83,33 +78,35 @@ namespace Hotel
                 Console.WriteLine("¡Tu habitación se ha ingresado con éxito!");            
         }
 
-            public static bool Comparacion(string cadenaTexto)
+        public static bool Comparacion(string cadenaTexto)
             {
                 int comparacion = string.Compare(cadenaTexto, "si", true);
                 if (comparacion == 0) return true;
                 else return false;
             }
-            public static void EliminarHabitacion()
+        public static void EliminarHabitacion()
             {
                 int consulta = Busqueda();
-                if (consulta != -1) listadoHabitaciones.Remove(listadoHabitaciones[consulta]);
-            }
-            
-       
+                if (consulta != -1) {listadoHabitaciones.Remove(listadoHabitaciones[consulta]); Console.WriteLine("Se ha eliminado dicha habitación"); }
+                else Console.WriteLine("No se pudo realizar la acción");
+        }            
 
         public static  void MostrarInfo()
             {
-            int consulta = Busqueda();
-            if (consulta != -1) {
-                Console.WriteLine($"Numero de habitación: {listadoHabitaciones[consulta].NumeroHabitacion} || Precio por noche: {listadoHabitaciones[consulta].PrecioNoche} || Cliente Asignado: {listadoHabitaciones[consulta].ClienteAsignado}");
-                listadoHabitaciones[consulta].AtributosEspecificos(consulta);
+
+            foreach (Habitacion objetoHabitacion in listadoHabitaciones) 
+            {
+                Console.WriteLine("---------------------------------------------------------------------");
+                Console.WriteLine($"Numero de habitación: {objetoHabitacion.NumeroHabitacion} || Precio por noche: {objetoHabitacion.ClienteAsignado}");
+                objetoHabitacion.AtributosEspecificos();
+                Console.WriteLine("---------------------------------------------------------------------");
+                Console.WriteLine();
             }
-            else Console.WriteLine("Desgraciadamente, el numero de habitación no se ha encontrado");
         }
 
-        public virtual void AtributosEspecificos(int consulta) { }
+        public virtual void AtributosEspecificos() { }
 
-            public static int Busqueda()
+        public static int Busqueda()
             {
                 Console.WriteLine("Ingrese el numero de habitación");
                 int numeroHabitacion = Convert.ToInt32(Console.ReadLine());
@@ -118,12 +115,8 @@ namespace Hotel
                 if (consulta >=0) return consulta;
                 else return -1; 
             }
-            public static void CambiarDisponibilidad(bool disponible)
-            {
 
-            }
-
-            public static void AsignarCliente()
+        public static void AsignarCliente()
             {
                 int consulta = Busqueda();
 
@@ -140,7 +133,7 @@ namespace Hotel
                 }
             }
 
-            public static void LiberarHabitacion()
+        public static void LiberarHabitacion()
             {
                 int consulta = Busqueda();
 
@@ -152,12 +145,10 @@ namespace Hotel
             }
             else
             {
-                Console.WriteLine("No se ha encontrado dicha habitación");
+                Console.WriteLine("La habitación no tiene a un cliente asignado");
             }
         
     }
-
-
 
             public Habitacion(int numeroHabitacion, double precioNoche, string clienteAsignado)
             {

@@ -10,7 +10,7 @@ namespace Hotel
     {
         public bool VistaAlMar { get; set; }
 
-        public override void AtributosEspecificos(int consulta)
+        public override void AtributosEspecificos()
         {
             Console.WriteLine($"Vista al mar: {VistaAlMar}");
         }

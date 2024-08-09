@@ -21,7 +21,7 @@ int Menu()
     Console.WriteLine("Hotel Bella Vista");
     Console.WriteLine("1. Agregar Habitación");
     Console.WriteLine("2. Eliminar habitación");
-    Console.WriteLine("3. Mostrar habitación");
+    Console.WriteLine("3. Mostrar habitaciones");
     Console.WriteLine("4. Asignar habitación a cliente");
     Console.WriteLine("5. Liberar Habitación");
     Console.WriteLine("6. Salida");

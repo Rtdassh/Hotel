@@ -8,7 +8,7 @@ namespace Hotel
 {
     internal class Deluxe: Habitacion
     {
-        public override void AtributosEspecificos(int consulta)
+        public override void AtributosEspecificos()
         {
             Console.WriteLine($"Servicios Adicionales: {ServiciosAdicionales}");
         }

@@ -8,7 +8,7 @@ namespace Hotel
 {
     internal class Suite: Habitacion
     {
-        public override void AtributosEspecificos(int consulta)
+        public override void AtributosEspecificos()
         {
             Console.WriteLine($"Jacuzzi: {Jacuzzi} || Numero de habitaciones: {NumeroHabitaciones}");
         }
